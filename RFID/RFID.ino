@@ -1,4 +1,13 @@
-// code is modified from a guide (I think it was on the ardruino website)
+/* 
+RFID SCANNER
+
+scans anything it sees and sends it over serial
+Some of this code comes from a guide, I forgot where
+
+Taylor Roberts
+
+*/
+
 
 #include <SPI.h>
 #include <MFRC522.h>
