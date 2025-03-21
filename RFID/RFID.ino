@@ -18,6 +18,7 @@ MFRC522 myRFID(SS_PIN, RST_PIN);   // Create MFRC522 instance.
  
 void setup() 
 {
+  pinMode(LED_BUILTIN, OUTPUT); // for communication testing
   Serial.begin(9600);   // Initiate a serial communication
   SPI.begin();      // Initiate  SPI bus
   myRFID.PCD_Init();   // Initiate MFRC522
@@ -26,6 +27,14 @@ void setup()
 }
 void loop() 
 {
+  // code for reading from serial! Not needed here, but leaving it around for future reference
+  
+  // if (Serial.available()) {
+  //   String input = Serial.readString();
+
+  //   Serial.print("Unity said: ");
+  //   Serial.println(input);
+  // }
   // Wait for RFID cards to be scanned
   if ( ! myRFID.PICC_IsNewCardPresent()) 
   {
