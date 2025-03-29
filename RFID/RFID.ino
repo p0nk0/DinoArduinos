@@ -18,7 +18,6 @@ MFRC522 myRFID(SS_PIN, RST_PIN);   // Create MFRC522 instance.
  
 void setup() 
 {
-  pinMode(LED_BUILTIN, OUTPUT); // for communication testing
   Serial.begin(9600);   // Initiate a serial communication
   SPI.begin();      // Initiate  SPI bus
   myRFID.PCD_Init();   // Initiate MFRC522
