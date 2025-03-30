@@ -3,9 +3,9 @@ Circuit Breaker Box Puzzle
 
 has 6 switches, sends a signal whenever any of them are flipped
 
-signal is in the form "01101", where the ith character is the on/off state of the ith switch
+signal is in the form "011001", where the ith character is the on/off state of the ith switch
 
-the switches are ordered like:
+the switches are ordered like: (when looking from the front)
 ---------
 | 1   2 |
 | 3   4 |
@@ -22,7 +22,7 @@ bool S4 = false;
 bool S5 = false;
 bool S6 = false;
 
-// pins:     3,  4,  5,  8,  9,  10
+// pins:     8,  9,  10, 3,  4,  5
 // switches: S2, S4, S6, S1, S3, S5
 
 void setup() {
@@ -40,30 +40,30 @@ void setup() {
 
 void loop() {
   // whenver anything changes from previous states: send ALL signal states
-  if (S1 != digitalInput(8) || 
-      S2 != digitalInput(3) || 
-      S3 != digitalInput(9) || 
-      S4 != digitalInput(4) || 
-      S5 != digitalInput(10) || 
-      S6 != digitalInput(5)) {
+  if (S1 != digitalRead(3) || 
+      S2 != digitalRead(8) || 
+      S3 != digitalRead(4) || 
+      S4 != digitalRead(9) || 
+      S5 != digitalRead(5) || 
+      S6 != digitalRead(10)) {
       
       // update all states
-      S1 = digitalInput(8);
-      S2 = digitalInput(3);
-      S3 = digitalInput(9);
-      S4 = digitalInput(4);
-      S5 = digitalInput(10); 
-      S6 = digitalInput(5);
+      S1 = digitalRead(3);
+      S2 = digitalRead(8);
+      S3 = digitalRead(4);
+      S4 = digitalRead(9);
+      S5 = digitalRead(5); 
+      S6 = digitalRead(10);
       
       // send all states
-      string content = "";
+      String content = "";
       content.concat(S1);
       content.concat(S2);
       content.concat(S3);
       content.concat(S4);
       content.concat(S5);
       content.concat(S6);
-      Serial.println();
+      Serial.println(content);
       delay(1000);
   }
 
