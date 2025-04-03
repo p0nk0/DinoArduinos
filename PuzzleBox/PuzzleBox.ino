@@ -64,7 +64,7 @@ void loop() {
       content.concat(S5);
       content.concat(S6);
       Serial.println(content);
-      delay(1000);
+      delay(100);
   }
 
 }
