@@ -17,6 +17,8 @@ const int jaw_gnash = 10;
 
 bool mouthOpen = false;
 
+
+// TODO: replace with sound effect lengths
 const int roar_duration = 2000;
 const int growl_duration = 1000;
 
@@ -56,7 +58,7 @@ bool stringComplete = false;
 
 int potVal = 0;
 const int potMin = 0;
-const int potMax = 327;
+const int potMax = 330;
 
 
 ServoEasing jaw;
@@ -112,7 +114,7 @@ void loop() {
       REye.write(r_eye_forward);
       Lid.write(lid_closed);
       jaw.write(jaw_close);
-      while(potVal < potMax){
+      while(potVal < (potMax-5)){
         unsigned long currentMillis = millis();
         if(currentMillis - previousMillis >= flash_interval){
           previousMillis = currentMillis;
@@ -133,11 +135,11 @@ void loop() {
           // ramp down to min speed
           speedVal = map(potVal, 200, potMax, PWM_max, PWM_min);
         }
-        speedVal = 100;
         analogWrite(RPWM_Output_1, speedVal);
         analogWrite(LPWM_Output_1, 0);
         digitalWrite(R_EN_1, HIGH);
         digitalWrite(L_EN_1, HIGH);
+        jaw.write(jaw_close);
         potVal = analogRead(potPin);
       }
       analogWrite(RPWM_Output_1, 0);
@@ -147,7 +149,7 @@ void loop() {
 
       relayState = LOW;
       
-      Serial.println("c");
+      Serial.print("c\n");
     } else if (userInput.equals("r")){
       // roar: open jaw, roar sound plays
       jaw.write(jaw_close);
@@ -156,14 +158,14 @@ void loop() {
       delay(roar_duration);
       jaw.write(jaw_close);
 
-      Serial.println("c");
+      Serial.print("c\n");
       animationEnabled = true;
     } else if (userInput.equals("h")){
       // hide: return to hiding
       LEye.write(l_eye_forward);
       REye.write(r_eye_forward);
       Lid.write(neutral);
-      while(potVal > potMin){
+      while(potVal > (potMin+5)){
         int speedVal = 100;
         analogWrite(RPWM_Output_1, 0);
         analogWrite(LPWM_Output_1, speedVal);
@@ -178,7 +180,7 @@ void loop() {
 
       relayState = LOW;
       
-      Serial.println("c");
+      Serial.print("c\n");
       animationEnabled = false;
     } else if (userInput.equals("g")){
       // growl: gnash teeth
@@ -187,7 +189,7 @@ void loop() {
       delay(growl_duration);
       jaw.write(jaw_close);
 
-      Serial.println("c");
+      Serial.print("c\n");
       animationEnabled = true;
     } else {
       digitalWrite(R_EN_1, LOW);
