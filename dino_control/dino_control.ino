@@ -105,9 +105,6 @@ void loop() {
   digitalWrite(R_EN_1, LOW);
   digitalWrite(L_EN_1, LOW);
   // digitalWrite(relayPin, relayState);
-
-  medianFilter.AddValue(analogRead(potPin));
-  potVal = medianFilter.GetFiltered();
   
   if(stringComplete){
     // process user input
@@ -135,8 +132,11 @@ void loop() {
         digitalWrite(R_EN_1, HIGH);
         digitalWrite(L_EN_1, HIGH);
         jaw.write(jaw_close);
-        
-        medianFilter.AddValue(analogRead(potPin));
+
+        int reading = analogRead(potPin);
+        if (reading < 350){
+          medianFilter.AddValue(reading);
+        }
         potVal = medianFilter.GetFiltered();
       }
       analogWrite(RPWM_Output_1, 0);
@@ -169,7 +169,10 @@ void loop() {
         digitalWrite(R_EN_1, HIGH);
         digitalWrite(L_EN_1, HIGH);
         
-        medianFilter.AddValue(analogRead(potPin));
+        int reading = analogRead(potPin);
+        if (reading < 350){
+          medianFilter.AddValue(reading);
+        }
         potVal = medianFilter.GetFiltered();
       }
       analogWrite(RPWM_Output_1, 0);
@@ -200,7 +203,14 @@ void loop() {
     userInput = "";
   } else {
     if (animationEnabled){
+      int reading = analogRead(potPin);
+      if (reading < 350){
+        medianFilter.AddValue(reading);
+      }
+      potVal = medianFilter.GetFiltered();
+      
       // roll for random animation
+      
       unsigned long currentMillis = millis();
       if(currentMillis - prevAnimationTime >= animationTimer){
         animationTimer = (unsigned long) (random(15*1000, 30*1000));
