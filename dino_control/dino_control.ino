@@ -106,6 +106,7 @@ void loop() {
   if(stringComplete){
     // process user input
     userInput.trim();
+    unsigned long start_time = millis();
     if(userInput.equals("j")){
       // jumpscare: come out of hiding, light flashes
       LEye.write(l_eye_forward);
@@ -114,14 +115,8 @@ void loop() {
       jaw.write(jaw_close);
       while(potVal < (potMax-5)){
         unsigned long currentMillis = millis();
-        if(currentMillis - previousMillis >= flash_interval){
-          previousMillis = currentMillis;
-          if(relayState == LOW){
-            relayState = HIGH;
-          } else{
-            relayState = LOW;
-          }
-          digitalWrite(relayPin, relayState);
+        if(currentMillis - start_time >= 30*1000){
+          break;
         }
         int speedVal = 0;
         if(potVal < 100){
@@ -164,6 +159,10 @@ void loop() {
       REye.write(r_eye_forward);
       Lid.write(neutral);
       while(potVal > (potMin+5)){
+        unsigned long currentMillis = millis();
+        if(currentMillis - start_time >= 30*1000){
+          break;
+        }
         int speedVal = 100;
         analogWrite(RPWM_Output_1, 0);
         analogWrite(LPWM_Output_1, speedVal);
