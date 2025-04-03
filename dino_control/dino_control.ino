@@ -79,7 +79,11 @@ void setup() {
   digitalWrite(L_EN_1, LOW);
   digitalWrite(relayPin, LOW);
 
-  potVal = analogRead(potPin);
+  medianFilter.AddValue(0);
+  medianFilter.AddValue(0);
+  medianFilter.AddValue(0);
+  medianFilter.AddValue(0);
+  medianFilter.AddValue(0);
 
   jaw.attach(jawPWM, 0);
   LEye.attach(LEyePWM, 90);
