@@ -17,10 +17,8 @@ const int jaw_gnash = 10;
 
 bool mouthOpen = false;
 
-
-// TODO: replace with sound effect lengths
-const int roar_duration = 2000;
-const int growl_duration = 1000;
+const int roar_duration = 1200;
+const int growl_duration = 3500;
 
 const int LEyePWM = 9;
 const int l_eye_forward = 30;
