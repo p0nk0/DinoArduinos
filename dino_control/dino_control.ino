@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
 #include "ServoEasing.hpp"
-
+#include "MedianFilterLib.h"
 
 // PWM pins
 const int RPWM_Output_1 = 2;
@@ -58,11 +58,12 @@ int potVal = 0;
 const int potMin = 0;
 const int potMax = 330;
 
-
 ServoEasing jaw;
 ServoEasing LEye;
 ServoEasing REye;
 ServoEasing Lid;
+
+MedianFilter<int> medianFilter(5);
 
 void setup() {
   pinMode(RPWM_Output_1, OUTPUT);
@@ -101,7 +102,8 @@ void loop() {
   digitalWrite(L_EN_1, LOW);
   // digitalWrite(relayPin, relayState);
 
-  potVal = analogRead(potPin);
+  medianFilter.AddValue(analogRead(potPin));
+  potVal = medianFilter.GetFiltered();
   
   if(stringComplete){
     // process user input
@@ -114,10 +116,6 @@ void loop() {
       Lid.write(lid_closed);
       jaw.write(jaw_close);
       while(potVal < (potMax-5)){
-        unsigned long currentMillis = millis();
-        if(currentMillis - start_time >= 30*1000){
-          break;
-        }
         int speedVal = 0;
         if(potVal < 100){
           // ramp up to full speed
@@ -133,7 +131,9 @@ void loop() {
         digitalWrite(R_EN_1, HIGH);
         digitalWrite(L_EN_1, HIGH);
         jaw.write(jaw_close);
-        potVal = analogRead(potPin);
+        
+        medianFilter.AddValue(analogRead(potPin));
+        potVal = medianFilter.GetFiltered();
       }
       analogWrite(RPWM_Output_1, 0);
       analogWrite(LPWM_Output_1, 0);
@@ -159,16 +159,14 @@ void loop() {
       REye.write(r_eye_forward);
       Lid.write(neutral);
       while(potVal > (potMin+5)){
-        unsigned long currentMillis = millis();
-        if(currentMillis - start_time >= 30*1000){
-          break;
-        }
         int speedVal = 100;
         analogWrite(RPWM_Output_1, 0);
         analogWrite(LPWM_Output_1, speedVal);
         digitalWrite(R_EN_1, HIGH);
         digitalWrite(L_EN_1, HIGH);
-        potVal = analogRead(potPin);
+        
+        medianFilter.AddValue(analogRead(potPin));
+        potVal = medianFilter.GetFiltered();
       }
       analogWrite(RPWM_Output_1, 0);
       analogWrite(LPWM_Output_1, 0);
