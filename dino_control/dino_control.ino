@@ -1,3 +1,8 @@
+/*
+Animatronic Dino Controler
+By: Matthew Saenz
+*/
+
 #include <Arduino.h>
 
 #include "ServoEasing.hpp"

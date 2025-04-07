@@ -1,5 +1,6 @@
 /* 
 Circuit Breaker Box Puzzle
+By: Taylor Roberts
 
 has 6 switches, sends a signal whenever any of them are flipped
 

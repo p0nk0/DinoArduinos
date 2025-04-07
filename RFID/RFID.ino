@@ -1,5 +1,6 @@
 /* 
-RFID SCANNER
+RFID Scanner
+By: Taylor Roberts
 
 scans anything it sees and sends it over serial
 Some of this code comes from a guide, I forgot where
