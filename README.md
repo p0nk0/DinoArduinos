@@ -8,7 +8,7 @@ Each Arduino controlled a different hardware component and communicated with Uni
 | Folder | Name | Role | Author | Libraries Needed | Arduino Type |
 |---|---|---|---|---|---|
 | `/RFID` | DNA Scanner | Reads RFID tags | Taylor Roberts | MFRC522, SPI | MKR Zero |
-| `/PuzzleBox` | Circuit Breaker Puzzle | Reads switch inputs | Taylor Roberts | Uno |
+| `/PuzzleBox` | Circuit Breaker Puzzle | Reads switch inputs | Taylor Roberts | | Uno |
 | `/dino_control` | Animatronic | Controlls dinosaur animatronic movements | Matthew Saenz | ServoEasing, MedianFilterLib | Mega |
 
 ## Setup
