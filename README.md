@@ -5,7 +5,9 @@ This repo contains the code behind the four Arduino boards used our 2025 Spring 
 Each Arduino controlled a different hardware component and communicated with Unity Via serial.
  
 ## Arduinos
-
+| Folder | Name | Role | Author | 
+|-------------------------------|
+| `/RFID` | DNA Scanner | Reads RFID tags | Taylor Roberts |
 
 ## Setup
 
