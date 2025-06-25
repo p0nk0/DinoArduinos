@@ -6,7 +6,7 @@ Each Arduino controlled a different hardware component and communicated with Uni
  
 ## Arduinos
 | Folder | Name | Role | Author | 
-|-------------------------------|
+|---|---|---|---|
 | `/RFID` | DNA Scanner | Reads RFID tags | Taylor Roberts |
 
 ## Setup
