@@ -12,4 +12,4 @@ Each Arduino controlled a different hardware component and communicated with Uni
 | `/dino_control` | Animatronic | Controlls dinosaur animatronic movements | Matthew Saenz | ServoEasing, MedianFilterLib | Mega |
 
 ## Setup
-- See `/Libraries/` for the needed non-standard libraries
+- See `/Libraries` for the needed non-standard libraries
