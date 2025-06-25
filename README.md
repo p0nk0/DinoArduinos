@@ -9,7 +9,7 @@ Each Arduino controlled a different hardware component and communicated with Uni
 |---|---|---|---|
 | `/RFID` | DNA Scanner | Reads RFID tags | Taylor Roberts |
 | `/PuzzleBox` | Circuit Breaker Puzzle | Reads switch inputs | Taylor Roberts |
-| `/dino_control` | Animatronic | Controlls dinosaur movements | Matthew Saenz|
+| `/dino_control` | Animatronic | Controlls dinosaur animatronic movements | Matthew Saenz|
 
 ## Setup
 
