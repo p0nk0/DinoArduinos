@@ -8,6 +8,8 @@ Each Arduino controlled a different hardware component and communicated with Uni
 | Folder | Name | Role | Author | 
 |---|---|---|---|
 | `/RFID` | DNA Scanner | Reads RFID tags | Taylor Roberts |
+| `/PuzzleBox` | Circuit Breaker Puzzle | Reads switch inputs | Taylor Roberts |
+| `/dino_control` | Animatronic | Controlls ... | Matthew Saenz|
 
 ## Setup
 
