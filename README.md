@@ -17,13 +17,10 @@ Each Arduino controlled a different hardware component and communicated with Uni
 
 ## Media
 DNA Scanner 
-
 ![DNA Scanner](Images/RFID.jpg)
 
 Circuit Breaker Puzzle
-
 ![Puzzle Box](Images/PuzzleBox.png)
 
 Animatronic Dinosaur
-
 ![Animatronic](Images/Dino.jpg)
