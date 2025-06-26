@@ -2,7 +2,7 @@
 This repo contains the code behind the three Arduinos used in our 2025 Spring Carnival attraction. See the [DinoGame](github.com/p0nk0/DinoGame) repo for more context.
 
 ## Overview
-Each Arduino controlled a different hardware component and communicated with Unity Via serial.
+Each Arduino controlled a different hardware component and communicated with Unity via serial.
  
 ## Arduinos
 | Folder | Name | Role | Author | Libraries Needed | Arduino Type |
