@@ -14,3 +14,13 @@ Each Arduino controlled a different hardware component and communicated with Uni
 ## Setup
 - See `/Libraries` for the needed non-standard libraries
 - For proper communication with Unity, make sure each SerialControllers object matches each board's respective baud rate.
+
+## Media
+DNA Scanner 
+![DNA Scanner](RFID.jpg)
+
+Circuit Breaker Puzzle
+![Puzzle Box](PuzzleBox.png)
+
+Animatronic Dinosaur
+![Animatronic](Dino.jpg)
